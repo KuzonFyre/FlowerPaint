@@ -112,6 +112,21 @@ namespace Forests
             }
         }
 
+        private void drawingPanel_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.S)
+            {
+                saveButton_Click(sender, e);
+            }
+            else if (e.Control && e.KeyCode == Keys.Z)
+            {
+                undoButton_Click(sender, e);
+            }else if(e.Control && e.Shift && e.KeyCode == Keys.Z)
+            {
+                redoButton_Click(sender, e);
+            }
+        }
+
         private void treeButton_Click(object sender, EventArgs e)
         {
             var button = sender as ToolStripButton;

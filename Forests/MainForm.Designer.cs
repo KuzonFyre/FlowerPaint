@@ -353,6 +353,7 @@
             this.Text = "Forest Drawing";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.drawingPanel_KeyDown);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.fileToolStrip.ResumeLayout(false);
             this.fileToolStrip.PerformLayout();
