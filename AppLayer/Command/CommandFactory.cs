@@ -105,6 +105,9 @@ namespace AppLayer.Command
                 case "RESIZE":
                     command = new ResizeCommand(commandParameters);
                     break;
+                case "DELETE":
+                    command = new DeleteCommand();
+                    break;
             }
 
             if (command != null)

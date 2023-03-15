@@ -143,13 +143,13 @@ namespace AppLayer.DrawingComponents
             return selectedElements;
         }
 
-        public bool Draw(Graphics graphics, bool redrawEvenIfNotDirty = false)
+        public bool Draw(Graphics graphics, Color backColor, bool redrawEvenIfNotDirty = false)
         {
             lock (_myLock)
             {
                 if (!IsDirty && !redrawEvenIfNotDirty) return false;
 
-                graphics.Clear(Color.White);
+                graphics.Clear(backColor);
                 foreach (var t in _elements)
                 {
                     t.Draw(graphics);

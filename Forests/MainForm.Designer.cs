@@ -55,6 +55,7 @@
             this.undoButton = new System.Windows.Forms.ToolStripButton();
             this.redoButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.button1 = new System.Windows.Forms.Button();
             this.fileToolStrip.SuspendLayout();
             this.drawingToolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -337,12 +338,23 @@
             this.toolStripButton1.Text = "toolStripButton1";
             this.toolStripButton1.Click += new System.EventHandler(this.exportButton_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1078, 34);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDark;
             this.ClientSize = new System.Drawing.Size(1219, 912);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.drawingToolStrip);
             this.Controls.Add(this.fileToolStrip);
             this.Controls.Add(this.drawingPanel);
@@ -389,6 +401,7 @@
         private System.Windows.Forms.ToolStripButton labelBoxButton;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripButton tree01Button;
+        private System.Windows.Forms.Button button1;
     }
 }
 

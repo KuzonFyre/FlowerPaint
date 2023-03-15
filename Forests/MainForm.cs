@@ -74,7 +74,8 @@ namespace Forests
                 _panelGraphics = drawingPanel.CreateGraphics();
             }
 
-            if (_drawing.Draw(_imageBufferGraphics, _forceRedraw))
+            
+            if (_drawing.Draw(_imageBufferGraphics, drawingPanel.BackColor, _forceRedraw))
                 _panelGraphics.DrawImageUnscaled(_imageBuffer, 0, 0);
 
             _forceRedraw = false;
@@ -112,6 +113,10 @@ namespace Forests
             }
         }
 
+        private void deleteElement()
+        {
+            CommandFactory.Instance.CreateAndDo("delete");
+        }
         private void drawingPanel_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.S)
@@ -124,6 +129,9 @@ namespace Forests
             }else if(e.Control && e.Shift && e.KeyCode == Keys.Z)
             {
                 redoButton_Click(sender, e);
+            }else if(e.KeyCode== Keys.Delete)
+            {
+                deleteElement();
             }
         }
 
@@ -371,6 +379,19 @@ namespace Forests
                         new Point(drawingPanel.ClientRectangle.Left + location.X,
                         drawingPanel.ClientRectangle.Top + location.Y));
             return p4;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ColorDialog colorDialog = new ColorDialog();
+            colorDialog.Color = drawingPanel.BackColor;
+
+            // Show the dialog box and check if the user clicks OK
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                // Set the background color of the form to the selected color
+                drawingPanel.BackColor = colorDialog.Color;
+            }
         }
     }
 }
