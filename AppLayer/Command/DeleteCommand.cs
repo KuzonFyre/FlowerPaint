@@ -9,14 +9,13 @@ namespace AppLayer.Command
 {
     public class DeleteCommand: Command
     {
-        private Element _deletedElement;
+        private List<Element> _deletedElements;
         public override bool Execute()
         {
-            _deletedElement = SelectionManager.SelectedElement; // retrieve selected element from SelectionManager
-            if (_deletedElement == null) return false;
+            _deletedElements = TargetDrawing.GetSelected();
+            if (_deletedElements == null) return false;
 
-            TargetDrawing.DeleteElement(_deletedElement);
-            SelectionManager.SelectedElement = null; // clear selected element in SelectionManager
+            TargetDrawing.DeleteAllSelected();
 
             TargetDrawing.IsDirty = true;
 
@@ -25,16 +24,14 @@ namespace AppLayer.Command
 
         internal override void Undo()
         {
-            TargetDrawing.Add(_deletedElement);
-            SelectionManager.SelectedElement = _deletedElement; // restore selected element in SelectionManager
+            _deletedElements.ForEach(e => { TargetDrawing.Add(e); });
 
             TargetDrawing.IsDirty = true;
         }
 
         internal override void Redo()
         {
-            TargetDrawing.DeleteElement(_deletedElement);
-            SelectionManager.SelectedElement = null; // clear selected element in SelectionManager
+            TargetDrawing.DeleteAllSelected();
 
             TargetDrawing.IsDirty = true;
         }

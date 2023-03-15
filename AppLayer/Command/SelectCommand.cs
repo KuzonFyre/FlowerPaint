@@ -22,8 +22,6 @@ namespace AppLayer.Command
 
             _originalState = _element.IsSelected;
              _element.IsSelected = !_originalState;
-
-            SelectionManager.SelectedElement = _element; // store selected element in SelectionManager
             TargetDrawing.IsDirty = true;
 
             return true;

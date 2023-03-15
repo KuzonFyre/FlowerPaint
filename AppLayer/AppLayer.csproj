@@ -48,6 +48,7 @@
     <Compile Include="Command\AddLineCommand.cs" />
     <Compile Include="Command\Class1.cs" />
     <Compile Include="Command\DeleteCommand.cs" />
+    <Compile Include="Command\DuplicateCommand.cs" />
     <Compile Include="Command\ExportCommand.cs" />
     <Compile Include="Command\Command.cs" />
     <Compile Include="Command\AddTreeCommand.cs" />
