@@ -39,7 +39,6 @@
             this.scale = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.pointerButton = new System.Windows.Forms.ToolStripButton();
-            this.treeButton = new System.Windows.Forms.ToolStripButton();
             this.tree02Button = new System.Windows.Forms.ToolStripButton();
             this.tree03Button = new System.Windows.Forms.ToolStripButton();
             this.tree04Button = new System.Windows.Forms.ToolStripButton();
@@ -108,7 +107,6 @@
             this.scaleLabel,
             this.scale,
             this.toolStripSeparator1,
-            this.treeButton,
             this.tree02Button,
             this.tree03Button,
             this.tree04Button,
@@ -163,18 +161,6 @@
             this.pointerButton.Size = new System.Drawing.Size(61, 50);
             this.pointerButton.Text = "pointerButton";
             this.pointerButton.Click += new System.EventHandler(this.pointerButton_Click);
-            // 
-            // treeButton
-            // 
-            this.treeButton.AutoSize = false;
-            this.treeButton.CheckOnClick = true;
-            this.treeButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.treeButton.Image = ((System.Drawing.Image)(resources.GetObject("treeButton.Image")));
-            this.treeButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.treeButton.Name = "treeButton";
-            this.treeButton.Size = new System.Drawing.Size(61, 61);
-            this.treeButton.Text = "Tree-01";
-            this.treeButton.Click += new System.EventHandler(this.treeButton_Click);
             // 
             // tree02Button
             // 
@@ -386,7 +372,6 @@
         private System.Windows.Forms.ToolStripButton saveButton;
         private System.Windows.Forms.ToolStrip drawingToolStrip;
         private System.Windows.Forms.ToolStripButton pointerButton;
-        private System.Windows.Forms.ToolStripButton treeButton;
         private System.Windows.Forms.ToolStripButton tree02Button;
         private System.Windows.Forms.ToolStripButton tree03Button;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
