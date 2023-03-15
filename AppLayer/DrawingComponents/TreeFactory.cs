@@ -37,6 +37,7 @@ namespace AppLayer.DrawingComponents
             {
                 treeWithIntrinsicState = new TreeWithIntrinsicState();
                 var resourceName = string.Format(ResourceNamePattern, extrinsicState.TreeType);
+                Console.WriteLine(resourceName);
                 treeWithIntrinsicState.LoadFromResource(resourceName, ReferenceType);
                 _sharedTrees.Add(extrinsicState.TreeType, treeWithIntrinsicState);
             }

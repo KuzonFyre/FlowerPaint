@@ -56,6 +56,7 @@ namespace AppLayer.Command
                 Location = treeLocation,
                 Size = treeSize
             };
+            Console.WriteLine(_treeType);
             _treeAdded = TreeFactory.Instance.GetTree(extrinsicState);
             TargetDrawing.Add(_treeAdded);
 

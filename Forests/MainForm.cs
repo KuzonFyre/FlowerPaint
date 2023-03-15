@@ -190,7 +190,7 @@ namespace Forests
 
         private void resize(object sender, EventArgs e)
         {
-            _drawing.GetSelected().ForEach(x => CommandFactory.Instance.CreateAndDo("resize",x));
+
         }
         private float ConvertToFloat(string text, float min, float max, float defaultValue)
         {

@@ -35,7 +35,11 @@ namespace AppLayer.DrawingComponents
 
             using (var stream = assembly.GetManifestResourceStream(treeType))
             {
-                if (stream == null) return;
+                if (stream == null) {
+                    Console.WriteLine("Null");
+                        return;
+                }
+                Console.WriteLine(stream.ToString());
                 Image = new Bitmap(stream);
                 ToolImage = new Bitmap(Image, ToolSize);
                 ToolImageSelected = new Bitmap(ToolSize.Width, ToolSize.Height);
