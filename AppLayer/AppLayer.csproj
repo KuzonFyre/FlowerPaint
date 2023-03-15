@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Command\AddBoxCommand.cs" />
     <Compile Include="Command\AddLineCommand.cs" />
+    <Compile Include="Command\Class1.cs" />
     <Compile Include="Command\ExportCommand.cs" />
     <Compile Include="Command\Command.cs" />
     <Compile Include="Command\AddTreeCommand.cs" />

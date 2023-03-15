@@ -11,20 +11,21 @@ namespace AppLayer.Command
 {
     public class ExportCommand : Command
     {
+        private readonly string _filename;
+        private readonly Bitmap _image;
+        internal ExportCommand(params object[] commandParameters) {
+            if (commandParameters.Length > 0)
+            {
+                _filename = commandParameters[0] as string;
+                _image = commandParameters[1] as Bitmap;
+            }
+        }
+
         public override bool Execute()
         {
-
-            // Get the control that contains the user-created content, e.g. a PictureBox
-            Control contentControl = myPictureBox;
-
-            // Create a new bitmap with the same size as the control
-            Bitmap bmp = new Bitmap(contentControl.Width, contentControl.Height);
-
-            // Draw the control onto the bitmap
-            contentControl.DrawToBitmap(bmp, contentControl.ClientRectangle);
-
             // Save the bitmap to a PNG or JPG file
-            bmp.Save("filename.png", ImageFormat.Png); // or ImageFormat.Jpeg
+            _image.Save(_filename, ImageFormat.Png); // or ImageFormat.Jpeg
+            return true;
 
         }
 

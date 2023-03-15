@@ -173,6 +173,10 @@ namespace Forests
             scale.Text = _currentScale.ToString(CultureInfo.InvariantCulture);
         }
 
+        private void resize(object sender, EventArgs e)
+        {
+            _drawing.GetSelected().ForEach(x => CommandFactory.Instance.CreateAndDo("resize",x));
+        }
         private float ConvertToFloat(string text, float min, float max, float defaultValue)
         {
             var result = defaultValue;
@@ -222,7 +226,17 @@ namespace Forests
 
         private void exportButton_Click(Object sender, EventArgs e)
         {
-
+            var dialog = new SaveFileDialog
+            {
+                DefaultExt = "png",
+                RestoreDirectory = true,
+                Filter = @"PNG files (*.png)|*.png|All files (*.*)|*.*"
+            };
+            if(dialog.ShowDialog() == DialogResult.OK)
+            {
+                //_imageBuffer.Save(dialog.FileName);
+                CommandFactory.Instance.CreateAndDo("export", new object[]{ dialog.FileName,_imageBuffer });
+            }
         }
 
         private void MainForm_Resize(object sender, EventArgs e)

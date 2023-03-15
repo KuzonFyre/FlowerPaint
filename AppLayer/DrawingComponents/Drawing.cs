@@ -116,6 +116,18 @@ namespace AppLayer.DrawingComponents
             }
         }
 
+        public List<Element> GetSelected()
+        {
+            List<Element> li = new List<Element>();
+            lock (_myLock)
+            {
+                foreach (var t in _elements.Where(t => t.IsSelected))
+                {
+                    li.Add(t);
+                }
+            }
+            return li;
+        }
         public List<Element> DeselectAll()
         {
             var selectedElements = new List<Element>();
