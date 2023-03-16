@@ -56,6 +56,7 @@
             this.lineButton = new System.Windows.Forms.ToolStripButton();
             this.labelBoxButton = new System.Windows.Forms.ToolStripButton();
             this.button1 = new System.Windows.Forms.Button();
+            this.move = new System.Windows.Forms.ToolStripButton();
             this.fileToolStrip.SuspendLayout();
             this.drawingToolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -89,7 +90,8 @@
             this.deleteButton,
             this.undoButton,
             this.redoButton,
-            this.ExportButton});
+            this.ExportButton,
+            this.move});
             this.fileToolStrip.Location = new System.Drawing.Point(0, 0);
             this.fileToolStrip.Name = "fileToolStrip";
             this.fileToolStrip.Size = new System.Drawing.Size(1219, 79);
@@ -348,6 +350,15 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // move
+            // 
+            this.move.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.move.Image = ((System.Drawing.Image)(resources.GetObject("move.Image")));
+            this.move.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.move.Name = "move";
+            this.move.Size = new System.Drawing.Size(36, 76);
+            this.move.Text = "move";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -361,7 +372,7 @@
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "MainForm";
-            this.Text = "Forest Drawing";
+            this.Text = "Sunny Flower Day";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.drawingPanel_KeyDown);
@@ -402,6 +413,7 @@
         private System.Windows.Forms.ToolStripButton ExportButton;
         private System.Windows.Forms.ToolStripButton tree01Button;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ToolStripButton move;
     }
 }
 

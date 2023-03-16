@@ -56,6 +56,7 @@
     <Compile Include="Command\DeselectAllCommand.cs" />
     <Compile Include="Command\Invoker.cs" />
     <Compile Include="Command\LoadCommand.cs" />
+    <Compile Include="Command\MoveCommand.cs" />
     <Compile Include="Command\NewCommand.cs" />
     <Compile Include="Command\RedoCommand.cs" />
     <Compile Include="Command\RemoveSelectedCommand.cs" />

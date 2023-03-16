@@ -114,6 +114,9 @@ namespace AppLayer.Command
                 case "DUPLICATETREE":
                     command = new DuplicateTreeCommand(commandParameters);
                     break;
+                case "MOVE":
+                    command = new MoveCommand(commandParameters);
+                    break;
             }
 
             if (command != null)

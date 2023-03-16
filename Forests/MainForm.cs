@@ -142,6 +142,21 @@ namespace Forests
             }else if(e.Control && e.KeyCode == Keys.OemMinus)
             {
                 CommandFactory.Instance.CreateAndDo("decreasetreesize");
+            }else if(e.Control && e.KeyCode == Keys.Left)
+            {
+                Console.WriteLine("Left");
+                CommandFactory.Instance.CreateAndDo("move", -10, 0);
+            }else if(e.Control && e.KeyCode == Keys.Right)
+            {
+                CommandFactory.Instance.CreateAndDo("move", 10, 0);
+                
+            }else if(e.Control && e.KeyCode == Keys.Up)
+            {
+                CommandFactory.Instance.CreateAndDo("move", 0, -10);
+            }
+            else if (e.Control && e.KeyCode == Keys.Down)
+            {
+                CommandFactory.Instance.CreateAndDo("move", 0, 10);
             }
         }
 
