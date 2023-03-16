@@ -103,10 +103,10 @@ namespace AppLayer.Command
                     command = new ExportCommand(commandParameters);
                     break;
                 case "INCREASETREESIZE":
-                    command = new IncreaseTreeSizeCommand();
+                    command = new IncreaseTreeSizeCommand(commandParameters);
                     break;
                 case "DECREASETREESIZE":
-                    command = new DecreaseTreeSizeCommand();
+                    command = new DecreaseTreeSizeCommand(commandParameters);
                     break;
                 case "DELETE":
                     command = new DeleteCommand();

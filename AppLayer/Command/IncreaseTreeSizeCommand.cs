@@ -7,6 +7,13 @@ namespace AppLayer.Command
     public class IncreaseTreeSizeCommand : Command
     {
         private List<Element> _resizedElements;
+        private int _sizeIncrease;
+
+        public IncreaseTreeSizeCommand(params object[] commandParameters)
+        {
+            if (commandParameters.Length > 0)
+            _sizeIncrease = (int) commandParameters[0];
+        }
         public override bool Execute()
         {
             _resizedElements = new List<Element>();
@@ -15,7 +22,7 @@ namespace AppLayer.Command
             foreach (Element element in elements)
             {
                 var newElement = element as TreeWithAllState;
-                newElement.ExtrinsicState.Size = new Size(newElement.ExtrinsicState.Size.Width + 10, newElement.ExtrinsicState.Size.Height + 10);
+                newElement.ExtrinsicState.Size = new Size(newElement.ExtrinsicState.Size.Width + _sizeIncrease, newElement.ExtrinsicState.Size.Height + _sizeIncrease);
                 _resizedElements.Add(newElement);
                 TargetDrawing.IsDirty = true;
             }
@@ -27,7 +34,7 @@ namespace AppLayer.Command
             foreach (Element element in _resizedElements)
             {
                 var newElement = element as TreeWithAllState;
-                newElement.ExtrinsicState.Size = new Size(newElement.ExtrinsicState.Size.Width + 10, newElement.ExtrinsicState.Size.Height + 10);
+                newElement.ExtrinsicState.Size = new Size(newElement.ExtrinsicState.Size.Width + _sizeIncrease, newElement.ExtrinsicState.Size.Height + _sizeIncrease);
                 TargetDrawing.IsDirty = true;
             }
         }
@@ -37,7 +44,7 @@ namespace AppLayer.Command
             foreach (Element element in _resizedElements)
             {
                 var newElement = element as TreeWithAllState;
-                newElement.ExtrinsicState.Size = new Size(newElement.ExtrinsicState.Size.Width - 10, newElement.ExtrinsicState.Size.Height - 10);
+                newElement.ExtrinsicState.Size = new Size(newElement.ExtrinsicState.Size.Width - _sizeIncrease, newElement.ExtrinsicState.Size.Height - _sizeIncrease);
                 TargetDrawing.IsDirty = true;
             }
         }

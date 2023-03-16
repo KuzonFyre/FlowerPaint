@@ -1,6 +1,7 @@
 ﻿using AppLayer.Command;
 using AppLayer.DrawingComponents;
 using System;
+using System.CodeDom;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
@@ -11,6 +12,8 @@ namespace Forests
 
     public partial class MainForm : Form
     {
+        private readonly int MOVEDISTANCE = 10;
+        private readonly int SIZEINCREMENT = 10;
         private readonly Drawing _drawing;
         private bool _forceRedraw;
         private readonly Invoker _invoker;
@@ -137,26 +140,26 @@ namespace Forests
             }
             else if (e.Control && e.KeyCode == Keys.Oemplus)
             {
-                CommandFactory.Instance.CreateAndDo("increasetreesize");
+                CommandFactory.Instance.CreateAndDo("increasetreesize", SIZEINCREMENT);
 
             }else if(e.Control && e.KeyCode == Keys.OemMinus)
             {
-                CommandFactory.Instance.CreateAndDo("decreasetreesize");
+                CommandFactory.Instance.CreateAndDo("decreasetreesize",SIZEINCREMENT);
             }else if(e.Control && e.KeyCode == Keys.Left)
             {
                 Console.WriteLine("Left");
-                CommandFactory.Instance.CreateAndDo("move", -10, 0);
+                CommandFactory.Instance.CreateAndDo("move", -1*MOVEDISTANCE, 0);
             }else if(e.Control && e.KeyCode == Keys.Right)
             {
-                CommandFactory.Instance.CreateAndDo("move", 10, 0);
+                CommandFactory.Instance.CreateAndDo("move", MOVEDISTANCE, 0);
                 
             }else if(e.Control && e.KeyCode == Keys.Up)
             {
-                CommandFactory.Instance.CreateAndDo("move", 0, -10);
+                CommandFactory.Instance.CreateAndDo("move", 0, -1*MOVEDISTANCE);
             }
             else if (e.Control && e.KeyCode == Keys.Down)
             {
-                CommandFactory.Instance.CreateAndDo("move", 0, 10);
+                CommandFactory.Instance.CreateAndDo("move", 0, MOVEDISTANCE);
             }
         }
 
