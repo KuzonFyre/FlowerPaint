@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using AppLayer.DrawingComponents;
+﻿using AppLayer.DrawingComponents;
+using System.Collections.Generic;
 
 namespace AppLayer.Command
 {
     public class RemoveSelectedCommand : Command
     {
-        private List<Element> _deletedElements; 
+        private List<Element> _deletedElements;
         internal RemoveSelectedCommand() { }
 
         public override bool Execute()
@@ -16,7 +16,7 @@ namespace AppLayer.Command
 
         internal override void Undo()
         {
-            if (_deletedElements == null || _deletedElements.Count==0) return;
+            if (_deletedElements == null || _deletedElements.Count == 0) return;
 
             foreach (var element in _deletedElements)
                 TargetDrawing?.Add(element);

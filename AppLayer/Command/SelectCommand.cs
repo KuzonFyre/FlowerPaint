@@ -1,5 +1,5 @@
-﻿using System.Drawing;
-using AppLayer.DrawingComponents;
+﻿using AppLayer.DrawingComponents;
+using System.Drawing;
 
 namespace AppLayer.Command
 {
@@ -8,11 +8,11 @@ namespace AppLayer.Command
         private readonly Point _location;
         private Element _element;
         private bool _originalState;
-         
+
         internal SelectCommand(params object[] commandParameters)
         {
-            if (commandParameters.Length>0)
-            _location = (Point) commandParameters[0];
+            if (commandParameters.Length > 0)
+                _location = (Point)commandParameters[0];
         }
 
         public override bool Execute()
@@ -21,7 +21,7 @@ namespace AppLayer.Command
             if (_element == null) return false;
 
             _originalState = _element.IsSelected;
-             _element.IsSelected = !_originalState;
+            _element.IsSelected = !_originalState;
             TargetDrawing.IsDirty = true;
 
             return true;

@@ -18,7 +18,7 @@ namespace AppLayer.DrawingComponents
 
         public override Element Clone()
         {
-            return new Line() {Start = Start, End = End};
+            return new Line() { Start = Start, End = End };
         }
 
         public override void Draw(Graphics graphics)

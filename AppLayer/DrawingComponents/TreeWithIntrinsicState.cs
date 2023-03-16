@@ -35,9 +35,10 @@ namespace AppLayer.DrawingComponents
 
             using (var stream = assembly.GetManifestResourceStream(treeType))
             {
-                if (stream == null) {
+                if (stream == null)
+                {
                     Console.WriteLine("Null");
-                        return;
+                    return;
                 }
                 Console.WriteLine(stream.ToString());
                 Image = new Bitmap(stream);
@@ -46,7 +47,7 @@ namespace AppLayer.DrawingComponents
 
                 var g = Graphics.FromImage(ToolImageSelected);
                 g.Clear(SelectionBackgroundColor);
-                g.DrawImage(ToolImage, new Point() {X=0, Y = 0});
+                g.DrawImage(ToolImage, new Point() { X = 0, Y = 0 });
             }
         }
 

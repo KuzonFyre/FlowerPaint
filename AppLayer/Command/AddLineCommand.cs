@@ -1,5 +1,5 @@
-﻿using System.Drawing;
-using AppLayer.DrawingComponents;
+﻿using AppLayer.DrawingComponents;
+using System.Drawing;
 
 namespace AppLayer.Command
 {
@@ -21,17 +21,17 @@ namespace AppLayer.Command
         internal AddLineCommand(params object[] commandParameters)
         {
             if (commandParameters.Length > 0)
-                _start = (Point) commandParameters[0];
+                _start = (Point)commandParameters[0];
 
             if (commandParameters.Length > 1)
-                _end = (Point) commandParameters[1];
+                _end = (Point)commandParameters[1];
         }
 
         public override bool Execute()
         {
-            if (_start==null || _end==null) return false;
+            if (_start == null || _end == null) return false;
 
-            _line = new Line() {Start = (Point) _start, End = (Point) _end};
+            _line = new Line() { Start = (Point)_start, End = (Point)_end };
             TargetDrawing.Add(_line);
 
             return true;

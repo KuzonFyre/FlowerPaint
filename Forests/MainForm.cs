@@ -1,9 +1,9 @@
-﻿using System;
+﻿using AppLayer.Command;
+using AppLayer.DrawingComponents;
+using System;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
-using AppLayer.Command;
-using AppLayer.DrawingComponents;
 
 namespace Forests
 {
@@ -38,7 +38,7 @@ namespace Forests
         private Bitmap _imageBuffer;
         private Graphics _imageBufferGraphics;
         private Graphics _panelGraphics;
-       
+
         public MainForm()
         {
             InitializeComponent();
@@ -74,7 +74,7 @@ namespace Forests
                 _panelGraphics = drawingPanel.CreateGraphics();
             }
 
-            
+
             if (_drawing.Draw(_imageBufferGraphics, drawingPanel.BackColor, _forceRedraw))
                 _panelGraphics.DrawImageUnscaled(_imageBuffer, 0, 0);
 
@@ -91,7 +91,7 @@ namespace Forests
             foreach (var item in drawingToolStrip.Items)
             {
                 var toolButton = item as ToolStripButton;
-                if (toolButton != null && item!=ignoreItem && toolButton.Checked )
+                if (toolButton != null && item != ignoreItem && toolButton.Checked)
                     toolButton.Checked = false;
             }
         }
@@ -101,7 +101,7 @@ namespace Forests
             var button = sender as ToolStripButton;
             ClearOtherSelectedTools(button);
 
-            if (button!=null && button.Checked)
+            if (button != null && button.Checked)
             {
                 _mode = PossibleModes.Selection;
                 _currentTreeResource = string.Empty;
@@ -122,19 +122,22 @@ namespace Forests
             else if (e.Control && e.KeyCode == Keys.Z)
             {
                 undoButton_Click(sender, e);
-            }else if(e.Control && e.Shift && e.KeyCode == Keys.Z)
+            }
+            else if (e.Control && e.Shift && e.KeyCode == Keys.Z)
             {
                 redoButton_Click(sender, e);
-            }else if(e.KeyCode== Keys.Delete)
+            }
+            else if (e.KeyCode == Keys.Delete)
             {
                 CommandFactory.Instance.CreateAndDo("delete");
             }
-            else if(e.Control && e.KeyCode == Keys.V)
+            else if (e.Control && e.KeyCode == Keys.V)
             {
-            CommandFactory.Instance.CreateAndDo("duplicatetree", drawingPanel.PointToClient(Cursor.Position));
-            }else if(e.Control && e.KeyCode == Keys.Oemplus)
+                CommandFactory.Instance.CreateAndDo("duplicatetree", drawingPanel.PointToClient(Cursor.Position));
+            }
+            else if (e.Control && e.KeyCode == Keys.Oemplus)
             {
-   
+                CommandFactory.Instance.CreateAndDo("resizetree");
 
             }
         }
@@ -161,7 +164,7 @@ namespace Forests
                     {
                         var form = new LabelBoxForm
                         {
-                            DesktopLocation = 
+                            DesktopLocation =
                                 new Point(ClientRectangle.Left + e.Location.X,
                                     ClientRectangle.Top + e.Location.Y)
                         };
@@ -173,7 +176,7 @@ namespace Forests
                             var minY = Math.Min(_startingPoint.Y, e.Location.Y);
                             var maxY = Math.Max(_startingPoint.Y, e.Location.Y);
 
-                            var size = new Size() {Width = maxX - minX, Height = maxY - minY};
+                            var size = new Size() { Width = maxX - minX, Height = maxY - minY };
                             CommandFactory.Instance.CreateAndDo("addbox", form.LabelText, _startingPoint, size);
                         }
                         break;
@@ -259,10 +262,10 @@ namespace Forests
                 RestoreDirectory = true,
                 Filter = @"PNG files (*.png)|*.png|All files (*.*)|*.*"
             };
-            if(dialog.ShowDialog() == DialogResult.OK)
+            if (dialog.ShowDialog() == DialogResult.OK)
             {
                 //_imageBuffer.Save(dialog.FileName);
-                CommandFactory.Instance.CreateAndDo("export", new object[]{ dialog.FileName,_imageBuffer });
+                CommandFactory.Instance.CreateAndDo("export", new object[] { dialog.FileName, _imageBuffer });
             }
         }
 
@@ -319,7 +322,7 @@ namespace Forests
             if (_mode != PossibleModes.BoxDrawing && _mode != PossibleModes.LineDrawing) return;
 
             _startingPoint = e.Location;
-            _rubberBandStart = ComputeAbsolutePoint(e.Location);          
+            _rubberBandStart = ComputeAbsolutePoint(e.Location);
             _showRubberBand = true;
         }
 

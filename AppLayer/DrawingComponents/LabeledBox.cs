@@ -32,7 +32,7 @@ namespace AppLayer.DrawingComponents
 
         public override Element Clone()
         {
-            return new LabeledBox() {Corner = Corner, Size = Size, Label = Label};
+            return new LabeledBox() { Corner = Corner, Size = Size, Label = Label };
         }
 
         public override void Draw(Graphics graphics)
@@ -52,7 +52,7 @@ namespace AppLayer.DrawingComponents
 
             var minimumSize = graphics.MeasureString("...", TextFont);
             if (Size.Width < minimumSize.Width - Padding * 2 ||
-                Size.Height < minimumSize.Height - Padding*2) return;
+                Size.Height < minimumSize.Height - Padding * 2) return;
 
             var formatter = new StringFormat
             {
@@ -61,7 +61,7 @@ namespace AppLayer.DrawingComponents
                 Trimming = StringTrimming.EllipsisCharacter
             };
 
-            var textRectangle = new RectangleF(Corner.X + Padding, Corner.Y + Padding, Size.Width - Padding*2, Size.Height - Padding*2);
+            var textRectangle = new RectangleF(Corner.X + Padding, Corner.Y + Padding, Size.Width - Padding * 2, Size.Height - Padding * 2);
 
             graphics.DrawString(Label, TextFont, TextBrush, textRectangle, formatter);
         }

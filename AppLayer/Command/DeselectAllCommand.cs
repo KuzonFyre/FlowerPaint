@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
+﻿using AppLayer.DrawingComponents;
+using System.Collections.Generic;
 using System.Linq;
-using AppLayer.DrawingComponents;
 
 namespace AppLayer.Command
 {
     public class DeselectAllCommand : Command
     {
-        private List<Element> _selectedElements; 
+        private List<Element> _selectedElements;
         internal DeselectAllCommand() { }
 
         public override bool Execute()
         {
-            _selectedElements =  TargetDrawing?.DeselectAll();
+            _selectedElements = TargetDrawing?.DeselectAll();
             return _selectedElements != null && _selectedElements.Count > 0;
         }
 

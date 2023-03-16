@@ -20,7 +20,7 @@ namespace AppLayer.Command
             {
                 lock (MyLock)
                 {
-                    if (_instance==null)
+                    if (_instance == null)
                         _instance = new CommandFactory();
                 }
                 return _instance;
@@ -69,7 +69,7 @@ namespace AppLayer.Command
 
             if (TargetDrawing == null) return;
 
-            Command command=null;
+            Command command = null;
             switch (commandType.Trim().ToUpper())
             {
                 case "NEW":
@@ -102,7 +102,7 @@ namespace AppLayer.Command
                 case "EXPORT":
                     command = new ExportCommand(commandParameters);
                     break;
-                case "RESIZE":
+                case "RESIZETREE":
                     command = new ResizeTreeCommand(commandParameters);
                     break;
                 case "DELETE":

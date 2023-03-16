@@ -13,16 +13,16 @@ namespace AppLayer.DrawingComponents
         private bool _isDirty = true;
 
         private static readonly DataContractJsonSerializer JsonSerializer =
-            new DataContractJsonSerializer(typeof(List<Element>), new []
+            new DataContractJsonSerializer(typeof(List<Element>), new[]
             {
                 typeof(Element), typeof(Tree), typeof(TreeWithAllState),
                 typeof(TreeExtrinsicState), typeof(LabeledBox), typeof(Line)
             });
 
-        public bool IsDirty 
-        { 
-            get => _isDirty; 
-            set => _isDirty = value; 
+        public bool IsDirty
+        {
+            get => _isDirty;
+            set => _isDirty = value;
         }
 
         public List<Element> GetCloneOfElements()
@@ -110,7 +110,7 @@ namespace AppLayer.DrawingComponents
 
         public Element FindElementAtPosition(Point point)
         {
-            
+
             lock (_myLock)
             {
                 return _elements.LastOrDefault(t => t.ContainsPoint(point));

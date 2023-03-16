@@ -1,12 +1,12 @@
-﻿using System.Collections.Generic;
-using AppLayer.DrawingComponents;
+﻿using AppLayer.DrawingComponents;
+using System.Collections.Generic;
 
 namespace AppLayer.Command
 {
     public class NewCommand : Command
     {
-        private List<Element> _previousElements; 
-        internal NewCommand() {}
+        private List<Element> _previousElements;
+        internal NewCommand() { }
 
         public override bool Execute()
         {

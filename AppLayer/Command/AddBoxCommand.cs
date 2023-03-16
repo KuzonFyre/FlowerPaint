@@ -1,5 +1,5 @@
-﻿using System.Drawing;
-using AppLayer.DrawingComponents;
+﻿using AppLayer.DrawingComponents;
+using System.Drawing;
 
 namespace AppLayer.Command
 {
@@ -22,20 +22,20 @@ namespace AppLayer.Command
         internal AddBoxCommand(params object[] commandParameters)
         {
             if (commandParameters.Length > 0)
-                _label = (string) commandParameters[0];
+                _label = (string)commandParameters[0];
 
             if (commandParameters.Length > 1)
-                _corner = (Point) commandParameters[1];
+                _corner = (Point)commandParameters[1];
 
             if (commandParameters.Length > 1)
-                _size = (Size) commandParameters[2];
+                _size = (Size)commandParameters[2];
         }
 
         public override bool Execute()
         {
             if (_label == null || _corner == null || _size == null) return false;
 
-            _labelBox = new LabeledBox() { Corner = (Point) _corner, Size = (Size) _size, Label = _label};
+            _labelBox = new LabeledBox() { Corner = (Point)_corner, Size = (Size)_size, Label = _label };
             TargetDrawing.Add(_labelBox);
 
             return true;

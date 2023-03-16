@@ -23,24 +23,25 @@ namespace AppLayer.DrawingComponents
         {
             IntrinsicState = sharedPart;                // From a decorator perspective, this is the decorated object
             ExtrinsicState = nonsharedPart;            // From a decorator perspective, this is the added feature or
-                                                        // capability that this object (a decorator) is adding
+                                                       // capability that this object (a decorator) is adding
         }
 
-        public override bool IsSelected {
-            get { return ExtrinsicState?.IsSelected ?? false;  }
-            set { if (ExtrinsicState!=null) ExtrinsicState.IsSelected = value;  }
+        public override bool IsSelected
+        {
+            get { return ExtrinsicState?.IsSelected ?? false; }
+            set { if (ExtrinsicState != null) ExtrinsicState.IsSelected = value; }
         }
 
         public override Point Location
         {
-            get { return ExtrinsicState?.Location ?? new Point(0,0) ; }
+            get { return ExtrinsicState?.Location ?? new Point(0, 0); }
             set { if (ExtrinsicState != null) ExtrinsicState.Location = value; }
         }
 
 
         public override Size Size
         {
-            get { return ExtrinsicState?.Size ?? new Size(0,0); }
+            get { return ExtrinsicState?.Size ?? new Size(0, 0); }
             set { if (ExtrinsicState != null) ExtrinsicState.Size = value; }
         }
 
@@ -60,7 +61,7 @@ namespace AppLayer.DrawingComponents
                 GraphicsUnit.Pixel);
 
             if (!ExtrinsicState.IsSelected) return;
-            var g = new GraphicsWithSelection() {MyGraphics = graphics};
+            var g = new GraphicsWithSelection() { MyGraphics = graphics };
             g.DrawSelectionBox(ExtrinsicState.Location, ExtrinsicState.Size);
         }
 

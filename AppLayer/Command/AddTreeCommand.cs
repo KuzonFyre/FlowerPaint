@@ -1,6 +1,6 @@
-﻿using System;
+﻿using AppLayer.DrawingComponents;
+using System;
 using System.Drawing;
-using AppLayer.DrawingComponents;
 
 namespace AppLayer.Command
 {
@@ -25,23 +25,23 @@ namespace AppLayer.Command
         ///     [3]: float      scale factor</param>
         internal AddTreeCommand(params object[] commandParameters)
         {
-            if (commandParameters.Length>0)
+            if (commandParameters.Length > 0)
                 _treeType = commandParameters[0] as string;
 
             if (commandParameters.Length > 1)
-                _location = (Point) commandParameters[1];
+                _location = (Point)commandParameters[1];
             else
                 _location = new Point(0, 0);
 
             if (commandParameters.Length > 2)
-                _scale = (float) commandParameters[2];
+                _scale = (float)commandParameters[2];
             else
                 _scale = 1.0F;
         }
 
         public override bool Execute()
         {
-            if (string.IsNullOrWhiteSpace(_treeType) || TargetDrawing==null) return false;
+            if (string.IsNullOrWhiteSpace(_treeType) || TargetDrawing == null) return false;
 
             var treeSize = new Size()
             {

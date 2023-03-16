@@ -1,11 +1,6 @@
 ﻿using AppLayer.DrawingComponents;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace AppLayer.Command
 {
@@ -27,7 +22,7 @@ namespace AppLayer.Command
             foreach (Element element in elements)
             {
                 var newElement = element as TreeWithAllState;
-                var TreeSize = new Size(newElement.Size.Width,newElement.Size.Height);
+                var TreeSize = new Size(newElement.Size.Width, newElement.Size.Height);
                 var extrinsicState = new TreeExtrinsicState()
                 {
                     TreeType = newElement.ExtrinsicState.TreeType,
@@ -40,12 +35,12 @@ namespace AppLayer.Command
                 TargetDrawing.IsDirty = true;
             }
             return true;
-            
+
         }
 
         internal override void Redo()
         {
-            foreach(Element element in _duplicatedElements)
+            foreach (Element element in _duplicatedElements)
             {
                 TargetDrawing.Add(element);
             }
@@ -57,7 +52,7 @@ namespace AppLayer.Command
             {
                 TargetDrawing.DeleteElement(element);
             }
-            
+
         }
     }
 }
