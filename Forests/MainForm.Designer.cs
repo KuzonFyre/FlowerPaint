@@ -40,6 +40,7 @@
             this.undoButton = new System.Windows.Forms.ToolStripButton();
             this.redoButton = new System.Windows.Forms.ToolStripButton();
             this.ExportButton = new System.Windows.Forms.ToolStripButton();
+            this.move = new System.Windows.Forms.ToolStripButton();
             this.drawingToolStrip = new System.Windows.Forms.ToolStrip();
             this.pointerButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -53,10 +54,7 @@
             this.tree06Button = new System.Windows.Forms.ToolStripButton();
             this.tree01Button = new System.Windows.Forms.ToolStripButton();
             this.tree07Button = new System.Windows.Forms.ToolStripButton();
-            this.lineButton = new System.Windows.Forms.ToolStripButton();
-            this.labelBoxButton = new System.Windows.Forms.ToolStripButton();
             this.button1 = new System.Windows.Forms.Button();
-            this.move = new System.Windows.Forms.ToolStripButton();
             this.fileToolStrip.SuspendLayout();
             this.drawingToolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -69,8 +67,6 @@
             this.drawingPanel.Name = "drawingPanel";
             this.drawingPanel.Size = new System.Drawing.Size(1091, 827);
             this.drawingPanel.TabIndex = 1;
-            this.drawingPanel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.drawingPanel_MouseDown);
-            this.drawingPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.drawingPanel_MouseMove);
             this.drawingPanel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.drawingPanel_MouseUp);
             // 
             // refreshTimer
@@ -171,6 +167,15 @@
             this.ExportButton.Text = "Export";
             this.ExportButton.Click += new System.EventHandler(this.exportButton_Click);
             // 
+            // move
+            // 
+            this.move.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.move.Image = ((System.Drawing.Image)(resources.GetObject("move.Image")));
+            this.move.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.move.Name = "move";
+            this.move.Size = new System.Drawing.Size(36, 76);
+            this.move.Text = "move";
+            // 
             // drawingToolStrip
             // 
             this.drawingToolStrip.BackColor = System.Drawing.Color.PowderBlue;
@@ -189,9 +194,7 @@
             this.tree05Button,
             this.tree06Button,
             this.tree01Button,
-            this.tree07Button,
-            this.lineButton,
-            this.labelBoxButton});
+            this.tree07Button});
             this.drawingToolStrip.Location = new System.Drawing.Point(0, 79);
             this.drawingToolStrip.Name = "drawingToolStrip";
             this.drawingToolStrip.Padding = new System.Windows.Forms.Padding(0, 10, 1, 0);
@@ -318,28 +321,6 @@
             this.tree07Button.Text = "Tree-07";
             this.tree07Button.Click += new System.EventHandler(this.treeButton_Click);
             // 
-            // lineButton
-            // 
-            this.lineButton.AutoSize = false;
-            this.lineButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.lineButton.Image = ((System.Drawing.Image)(resources.GetObject("lineButton.Image")));
-            this.lineButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.lineButton.Name = "lineButton";
-            this.lineButton.Size = new System.Drawing.Size(90, 24);
-            this.lineButton.Text = "Line";
-            this.lineButton.Click += new System.EventHandler(this.lineButton_Click);
-            // 
-            // labelBoxButton
-            // 
-            this.labelBoxButton.AutoSize = false;
-            this.labelBoxButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.labelBoxButton.Image = ((System.Drawing.Image)(resources.GetObject("labelBoxButton.Image")));
-            this.labelBoxButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.labelBoxButton.Name = "labelBoxButton";
-            this.labelBoxButton.Size = new System.Drawing.Size(90, 40);
-            this.labelBoxButton.Text = "Label Box";
-            this.labelBoxButton.Click += new System.EventHandler(this.labelBoxButton_Click);
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(1006, 23);
@@ -349,15 +330,6 @@
             this.button1.Text = "Background Color";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // move
-            // 
-            this.move.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.move.Image = ((System.Drawing.Image)(resources.GetObject("move.Image")));
-            this.move.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.move.Name = "move";
-            this.move.Size = new System.Drawing.Size(36, 76);
-            this.move.Text = "move";
             // 
             // MainForm
             // 
@@ -408,8 +380,6 @@
         private System.Windows.Forms.ToolStripButton deleteButton;
         private System.Windows.Forms.ToolStripButton undoButton;
         private System.Windows.Forms.ToolStripButton redoButton;
-        private System.Windows.Forms.ToolStripButton lineButton;
-        private System.Windows.Forms.ToolStripButton labelBoxButton;
         private System.Windows.Forms.ToolStripButton ExportButton;
         private System.Windows.Forms.ToolStripButton tree01Button;
         private System.Windows.Forms.Button button1;

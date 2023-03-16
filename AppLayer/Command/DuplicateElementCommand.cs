@@ -4,12 +4,12 @@ using System.Drawing;
 
 namespace AppLayer.Command
 {
-    public class DuplicateTreeCommand : Command
+    public class DuplicateElementCommand : Command
     {
         private Point _location;
         private List<Element> _duplicatedElements;
 
-        public DuplicateTreeCommand(params object[] commandParameters)
+        public DuplicateElementCommand(params object[] commandParameters)
         {
             if (commandParameters.Length > 0)
                 _location = (Point)commandParameters[0];
@@ -22,12 +22,12 @@ namespace AppLayer.Command
             foreach (Element element in elements)
             {
                 var newElement = element as TreeWithAllState;
-                var TreeSize = new Size(newElement.Size.Width, newElement.Size.Height);
+                var Size = new Size(newElement.Size.Width, newElement.Size.Height);
                 var extrinsicState = new TreeExtrinsicState()
                 {
                     TreeType = newElement.ExtrinsicState.TreeType,
                     Location = _location,
-                    Size = TreeSize
+                    Size = Size
                 };
                 var _treeadded = TreeFactory.Instance.GetTree(extrinsicState);
                 _duplicatedElements.Add(_treeadded);

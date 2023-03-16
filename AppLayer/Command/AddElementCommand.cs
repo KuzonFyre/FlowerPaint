@@ -4,7 +4,7 @@ using System.Drawing;
 
 namespace AppLayer.Command
 {
-    public class AddTreeCommand : Command
+    public class AddElementCommand : Command
     {
         private const int NormalWidth = 80;
         private const int NormalHeight = 80;
@@ -13,7 +13,7 @@ namespace AppLayer.Command
         private Point _location;
         private readonly float _scale;
         private Element _treeAdded;
-        internal AddTreeCommand() { }
+        internal AddElementCommand() { }
 
         /// <summary>
         /// Constructor
@@ -23,7 +23,7 @@ namespace AppLayer.Command
         ///     [1]: string     tree type -- a fully qualified resource name
         ///     [2]: Point      center location for the tree, defaut = top left corner
         ///     [3]: float      scale factor</param>
-        internal AddTreeCommand(params object[] commandParameters)
+        internal AddElementCommand(params object[] commandParameters)
         {
             if (commandParameters.Length > 0)
                 _treeType = commandParameters[0] as string;

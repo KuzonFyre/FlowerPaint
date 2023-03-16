@@ -1,10 +1,6 @@
 ﻿using AppLayer.DrawingComponents;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppLayer.Command
 {
@@ -13,7 +9,8 @@ namespace AppLayer.Command
         private List<Element> _movedElements;
         private int _xChange;
         private int _yChange;
-        public MoveCommand(params object[] commandParameters) {
+        public MoveCommand(params object[] commandParameters)
+        {
 
             if (commandParameters.Length > 0)
             {

@@ -16,7 +16,7 @@ namespace AppLayer.DrawingComponents
             new DataContractJsonSerializer(typeof(List<Element>), new[]
             {
                 typeof(Element), typeof(Tree), typeof(TreeWithAllState),
-                typeof(TreeExtrinsicState), typeof(LabeledBox), typeof(Line)
+                typeof(TreeExtrinsicState)
             });
 
         public bool IsDirty

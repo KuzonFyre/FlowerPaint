@@ -1,21 +1,18 @@
 ﻿using AppLayer.DrawingComponents;
-using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AppLayer.Command
 {
-    public class DecreaseTreeSizeCommand : Command
+    public class IncreaseSizeCommand : Command
     {
         private List<Element> _resizedElements;
-        private int _sizeDecrease;
-        public DecreaseTreeSizeCommand(params object[] commandParameters)
+        private int _sizeIncrease;
+
+        public IncreaseSizeCommand(params object[] commandParameters)
         {
             if (commandParameters.Length > 0)
-                _sizeDecrease = (int)commandParameters[0];
+                _sizeIncrease = (int)commandParameters[0];
         }
         public override bool Execute()
         {
@@ -25,7 +22,7 @@ namespace AppLayer.Command
             foreach (Element element in elements)
             {
                 var newElement = element as TreeWithAllState;
-                newElement.ExtrinsicState.Size = new Size(newElement.ExtrinsicState.Size.Width - _sizeDecrease, newElement.ExtrinsicState.Size.Height - _sizeDecrease);
+                newElement.ExtrinsicState.Size = new Size(newElement.ExtrinsicState.Size.Width + _sizeIncrease, newElement.ExtrinsicState.Size.Height + _sizeIncrease);
                 _resizedElements.Add(newElement);
                 TargetDrawing.IsDirty = true;
             }
@@ -37,7 +34,7 @@ namespace AppLayer.Command
             foreach (Element element in _resizedElements)
             {
                 var newElement = element as TreeWithAllState;
-                newElement.ExtrinsicState.Size = new Size(newElement.ExtrinsicState.Size.Width - _sizeDecrease, newElement.ExtrinsicState.Size.Height - _sizeDecrease);
+                newElement.ExtrinsicState.Size = new Size(newElement.ExtrinsicState.Size.Width + _sizeIncrease, newElement.ExtrinsicState.Size.Height + _sizeIncrease);
                 TargetDrawing.IsDirty = true;
             }
         }
@@ -47,9 +44,10 @@ namespace AppLayer.Command
             foreach (Element element in _resizedElements)
             {
                 var newElement = element as TreeWithAllState;
-                newElement.ExtrinsicState.Size = new Size(newElement.ExtrinsicState.Size.Width + _sizeDecrease, newElement.ExtrinsicState.Size.Height + _sizeDecrease);
+                newElement.ExtrinsicState.Size = new Size(newElement.ExtrinsicState.Size.Width - _sizeIncrease, newElement.ExtrinsicState.Size.Height - _sizeIncrease);
                 TargetDrawing.IsDirty = true;
             }
         }
     }
 }
+

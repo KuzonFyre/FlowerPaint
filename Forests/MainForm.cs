@@ -1,7 +1,6 @@
 ﻿using AppLayer.Command;
 using AppLayer.DrawingComponents;
 using System;
-using System.CodeDom;
 using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
@@ -19,20 +18,12 @@ namespace Forests
         private readonly Invoker _invoker;
         private string _currentTreeResource;
         private float _currentScale = 1;
-        private bool _showRubberBand;
-        private bool _eraseLastRubberBand;
-        private Point _startingPoint;
-        private Point _lastRubberBandEnd;
-        private Point _rubberBandStart;
-        private Point _rubberBandEnd;
 
 
         private enum PossibleModes
         {
             None,
             TreeDrawing,
-            LineDrawing,
-            BoxDrawing,
             Selection
         };
 
@@ -142,20 +133,24 @@ namespace Forests
             {
                 CommandFactory.Instance.CreateAndDo("increasetreesize", SIZEINCREMENT);
 
-            }else if(e.Control && e.KeyCode == Keys.OemMinus)
+            }
+            else if (e.Control && e.KeyCode == Keys.OemMinus)
             {
-                CommandFactory.Instance.CreateAndDo("decreasetreesize",SIZEINCREMENT);
-            }else if(e.Control && e.KeyCode == Keys.Left)
+                CommandFactory.Instance.CreateAndDo("decreasetreesize", SIZEINCREMENT);
+            }
+            else if (e.Control && e.KeyCode == Keys.Left)
             {
                 Console.WriteLine("Left");
-                CommandFactory.Instance.CreateAndDo("move", -1*MOVEDISTANCE, 0);
-            }else if(e.Control && e.KeyCode == Keys.Right)
+                CommandFactory.Instance.CreateAndDo("move", -1 * MOVEDISTANCE, 0);
+            }
+            else if (e.Control && e.KeyCode == Keys.Right)
             {
                 CommandFactory.Instance.CreateAndDo("move", MOVEDISTANCE, 0);
-                
-            }else if(e.Control && e.KeyCode == Keys.Up)
+
+            }
+            else if (e.Control && e.KeyCode == Keys.Up)
             {
-                CommandFactory.Instance.CreateAndDo("move", 0, -1*MOVEDISTANCE);
+                CommandFactory.Instance.CreateAndDo("move", 0, -1 * MOVEDISTANCE);
             }
             else if (e.Control && e.KeyCode == Keys.Down)
             {
@@ -181,30 +176,6 @@ namespace Forests
         {
             switch (_mode)
             {
-                case PossibleModes.BoxDrawing:
-                    {
-                        var form = new LabelBoxForm
-                        {
-                            DesktopLocation =
-                                new Point(ClientRectangle.Left + e.Location.X,
-                                    ClientRectangle.Top + e.Location.Y)
-                        };
-
-                        if (form.ShowDialog() == DialogResult.OK)
-                        {
-                            var minX = Math.Min(_startingPoint.X, e.Location.X);
-                            var maxX = Math.Max(_startingPoint.X, e.Location.X);
-                            var minY = Math.Min(_startingPoint.Y, e.Location.Y);
-                            var maxY = Math.Max(_startingPoint.Y, e.Location.Y);
-
-                            var size = new Size() { Width = maxX - minX, Height = maxY - minY };
-                            CommandFactory.Instance.CreateAndDo("addbox", form.LabelText, _startingPoint, size);
-                        }
-                        break;
-                    }
-                case PossibleModes.LineDrawing:
-                    CommandFactory.Instance.CreateAndDo("addline", _startingPoint, e.Location);
-                    break;
                 case PossibleModes.TreeDrawing:
                     if (!string.IsNullOrWhiteSpace(_currentTreeResource))
                         CommandFactory.Instance.CreateAndDo("addtree", _currentTreeResource, e.Location, _currentScale);
@@ -213,9 +184,6 @@ namespace Forests
                     CommandFactory.Instance.CreateAndDo("select", e.Location);
                     break;
             }
-
-            _showRubberBand = false;
-            _eraseLastRubberBand = false;
         }
 
         private void scale_Leave(object sender, EventArgs e)
@@ -224,10 +192,6 @@ namespace Forests
             scale.Text = _currentScale.ToString(CultureInfo.InvariantCulture);
         }
 
-        private void resize(object sender, EventArgs e)
-        {
-
-        }
         private float ConvertToFloat(string text, float min, float max, float defaultValue)
         {
             var result = defaultValue;
@@ -328,86 +292,6 @@ namespace Forests
             _invoker.Redo();
         }
 
-        private void lineButton_Click(object sender, EventArgs e)
-        {
-            _mode = PossibleModes.LineDrawing;
-        }
-
-        private void labelBoxButton_Click(object sender, EventArgs e)
-        {
-            _mode = PossibleModes.BoxDrawing;
-        }
-
-        private void drawingPanel_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (_mode != PossibleModes.BoxDrawing && _mode != PossibleModes.LineDrawing) return;
-
-            _startingPoint = e.Location;
-            _rubberBandStart = ComputeAbsolutePoint(e.Location);
-            _showRubberBand = true;
-        }
-
-        private void drawingPanel_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (!_showRubberBand) return;
-
-            _rubberBandEnd = ComputeAbsolutePoint(e.Location);
-
-            switch (_mode)
-            {
-                case PossibleModes.LineDrawing:
-                    DrawRubberBandLine();
-                    break;
-                case PossibleModes.BoxDrawing:
-                    DrawRubberBandBox();
-                    break;
-            }
-
-            _eraseLastRubberBand = true;
-            _lastRubberBandEnd = _rubberBandEnd;
-        }
-
-        private void DrawRubberBandLine()
-        {
-
-            if (_eraseLastRubberBand)
-                EraseOldRubberBandLine();
-
-            ControlPaint.DrawReversibleLine(_rubberBandStart, _rubberBandEnd, Color.Gray);
-        }
-
-        private void EraseOldRubberBandLine()
-        {
-            ControlPaint.DrawReversibleLine(_rubberBandStart, _lastRubberBandEnd, Color.Gray);
-        }
-
-        private void DrawRubberBandBox()
-        {
-            if (_eraseLastRubberBand)
-                EraseOldRubberBandFrame();
-
-            var rectangle = new Rectangle(_rubberBandStart.X, _rubberBandStart.Y,
-                                        _rubberBandEnd.X - _rubberBandStart.X, _rubberBandEnd.Y - _rubberBandStart.Y);
-            ControlPaint.DrawReversibleFrame(rectangle, Color.Gray, FrameStyle.Dashed);
-        }
-
-        private void EraseOldRubberBandFrame()
-        {
-            var oldRectangle = new Rectangle(_rubberBandStart.X, _rubberBandStart.Y,
-                                        _lastRubberBandEnd.X - _rubberBandStart.X, _lastRubberBandEnd.Y - _rubberBandStart.Y);
-            ControlPaint.DrawReversibleFrame(oldRectangle, Color.Gray, FrameStyle.Dashed);
-        }
-
-        private Point ComputeAbsolutePoint(Point location)
-        {
-            var p1 = this.PointToScreen(new Point(0, 0));
-            var p2 = drawingPanel.PointToScreen(new Point(0, 0));
-
-            var p4 = drawingPanel.PointToScreen(
-                        new Point(drawingPanel.ClientRectangle.Left + location.X,
-                        drawingPanel.ClientRectangle.Top + location.Y));
-            return p4;
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {

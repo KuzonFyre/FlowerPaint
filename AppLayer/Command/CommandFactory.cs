@@ -38,7 +38,6 @@ namespace AppLayer.Command
         /// <param name="commandType">type of command to Create:
         ///             New
         ///             AddTree
-        ///             AddLine
         ///             AddDraw
         ///             Remove
         ///             Select
@@ -76,13 +75,7 @@ namespace AppLayer.Command
                     command = new NewCommand();
                     break;
                 case "ADDTREE":
-                    command = new AddTreeCommand(commandParameters);
-                    break;
-                case "ADDBOX":
-                    command = new AddBoxCommand(commandParameters);
-                    break;
-                case "ADDLINE":
-                    command = new AddLineCommand(commandParameters);
+                    command = new AddElementCommand(commandParameters);
                     break;
                 case "REMOVE":
                     command = new RemoveSelectedCommand();
@@ -103,16 +96,16 @@ namespace AppLayer.Command
                     command = new ExportCommand(commandParameters);
                     break;
                 case "INCREASETREESIZE":
-                    command = new IncreaseTreeSizeCommand(commandParameters);
+                    command = new IncreaseSizeCommand(commandParameters);
                     break;
                 case "DECREASETREESIZE":
-                    command = new DecreaseTreeSizeCommand(commandParameters);
+                    command = new DecreaseSizeCommand(commandParameters);
                     break;
                 case "DELETE":
                     command = new DeleteCommand();
                     break;
                 case "DUPLICATETREE":
-                    command = new DuplicateTreeCommand(commandParameters);
+                    command = new DuplicateElementCommand(commandParameters);
                     break;
                 case "MOVE":
                     command = new MoveCommand(commandParameters);
