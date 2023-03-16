@@ -118,7 +118,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Graphics\Export.png" />
-    <Content Include="Graphics\Flower.png" />
     <Content Include="Graphics\New.png" />
     <Content Include="Graphics\Open.png" />
     <Content Include="Graphics\Save.png" />

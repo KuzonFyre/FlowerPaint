@@ -103,10 +103,13 @@ namespace AppLayer.Command
                     command = new ExportCommand(commandParameters);
                     break;
                 case "RESIZE":
-                    command = new ResizeCommand(commandParameters);
+                    command = new ResizeTreeCommand(commandParameters);
                     break;
                 case "DELETE":
                     command = new DeleteCommand();
+                    break;
+                case "DUPLICATETREE":
+                    command = new DuplicateTreeCommand(commandParameters);
                     break;
             }
 

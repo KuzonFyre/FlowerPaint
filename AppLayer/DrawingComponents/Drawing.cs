@@ -110,6 +110,7 @@ namespace AppLayer.DrawingComponents
 
         public Element FindElementAtPosition(Point point)
         {
+            
             lock (_myLock)
             {
                 return _elements.LastOrDefault(t => t.ContainsPoint(point));

@@ -113,10 +113,6 @@ namespace Forests
             }
         }
 
-        private void deleteElement()
-        {
-            CommandFactory.Instance.CreateAndDo("delete");
-        }
         private void drawingPanel_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.Control && e.KeyCode == Keys.S)
@@ -131,7 +127,15 @@ namespace Forests
                 redoButton_Click(sender, e);
             }else if(e.KeyCode== Keys.Delete)
             {
-                deleteElement();
+                CommandFactory.Instance.CreateAndDo("delete");
+            }
+            else if(e.Control && e.KeyCode == Keys.V)
+            {
+            CommandFactory.Instance.CreateAndDo("duplicatetree", drawingPanel.PointToClient(Cursor.Position));
+            }else if(e.Control && e.KeyCode == Keys.Oemplus)
+            {
+   
+
             }
         }
 

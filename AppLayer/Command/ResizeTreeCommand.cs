@@ -8,13 +8,11 @@ using System.Threading.Tasks;
 
 namespace AppLayer.Command
 {
-    public class ResizeCommand : Command
+    public class ResizeTreeCommand : Command
     {
-        private readonly Element _element;
-        internal ResizeCommand(params object[] commandParameters)
+        private List<Element> _selectedElements;
+        public ResizeTreeCommand(params object[] commandParameters)
         {
-            if (commandParameters.Length > 0)
-                _element = (Element)commandParameters[0];
         }
         public override bool Execute()
         {
@@ -32,3 +30,4 @@ namespace AppLayer.Command
         }
     }
 }
+
