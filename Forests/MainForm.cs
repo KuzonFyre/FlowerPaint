@@ -137,8 +137,11 @@ namespace Forests
             }
             else if (e.Control && e.KeyCode == Keys.Oemplus)
             {
-                CommandFactory.Instance.CreateAndDo("resizetree");
+                CommandFactory.Instance.CreateAndDo("increasetreesize");
 
+            }else if(e.Control && e.KeyCode == Keys.OemMinus)
+            {
+                CommandFactory.Instance.CreateAndDo("decreasetreesize");
             }
         }
 

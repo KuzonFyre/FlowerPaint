@@ -4,12 +4,9 @@ using System.Drawing;
 
 namespace AppLayer.Command
 {
-    public class ResizeTreeCommand : Command
+    public class IncreaseTreeSizeCommand : Command
     {
         private List<Element> _resizedElements;
-        public ResizeTreeCommand(params object[] commandParameters)
-        {
-        }
         public override bool Execute()
         {
             _resizedElements = new List<Element>();

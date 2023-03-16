@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Command\AddBoxCommand.cs" />
     <Compile Include="Command\AddLineCommand.cs" />
+    <Compile Include="Command\DecreaseTreeSizeCommand.cs" />
     <Compile Include="Command\DeleteCommand.cs" />
     <Compile Include="Command\DuplicateTreeCommand.cs" />
     <Compile Include="Command\ExportCommand.cs" />
@@ -58,7 +59,7 @@
     <Compile Include="Command\NewCommand.cs" />
     <Compile Include="Command\RedoCommand.cs" />
     <Compile Include="Command\RemoveSelectedCommand.cs" />
-    <Compile Include="Command\ResizeTreeCommand.cs" />
+    <Compile Include="Command\IncreaseTreeSizeCommand.cs" />
     <Compile Include="Command\SaveCommand.cs" />
     <Compile Include="Command\SelectCommand.cs" />
     <Compile Include="Command\SelectionManager.cs" />
