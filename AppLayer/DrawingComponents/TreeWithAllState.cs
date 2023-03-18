@@ -11,15 +11,15 @@ namespace AppLayer.DrawingComponents
     /// For the decorator pattern, this class is a Decorator.  It add the extrinsic state to TreeWithIntrinsic State objects
     /// </summary>
     [DataContract]
-    public class TreeWithAllState : Tree
+    public class TreeWithAllState : ImageElement
     {
         public Pen OutlinePen { get; set; } = new Pen(Color.DarkGray);
         internal TreeWithIntrinsicState IntrinsicState { get; }
 
         [DataMember]
-        public TreeExtrinsicState ExtrinsicState { get; set; }
+        public ImageElementExtrinsicState ExtrinsicState { get; set; }
 
-        internal TreeWithAllState(TreeWithIntrinsicState sharedPart, TreeExtrinsicState nonsharedPart)
+        internal TreeWithAllState(TreeWithIntrinsicState sharedPart, ImageElementExtrinsicState nonsharedPart)
         {
             IntrinsicState = sharedPart;                // From a decorator perspective, this is the decorated object
             ExtrinsicState = nonsharedPart;            // From a decorator perspective, this is the added feature or

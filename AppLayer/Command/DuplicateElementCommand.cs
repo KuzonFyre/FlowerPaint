@@ -23,7 +23,7 @@ namespace AppLayer.Command
             {
                 var newElement = element as TreeWithAllState;
                 var Size = new Size(newElement.Size.Width, newElement.Size.Height);
-                var extrinsicState = new TreeExtrinsicState()
+                var extrinsicState = new ImageElementExtrinsicState()
                 {
                     TreeType = newElement.ExtrinsicState.TreeType,
                     Location = _location,

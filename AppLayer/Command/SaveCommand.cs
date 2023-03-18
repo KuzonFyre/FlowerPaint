@@ -5,7 +5,7 @@ namespace AppLayer.Command
     public class SaveCommand : Command
     {
         private readonly string _filename;
-        internal SaveCommand(params object[] commandParameters)
+        public SaveCommand(params object[] commandParameters)
         {
             if (commandParameters.Length > 0)
                 _filename = commandParameters[0] as string;

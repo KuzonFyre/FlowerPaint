@@ -9,7 +9,7 @@ namespace AppLayer.Command
         private Element _element;
         private bool _originalState;
 
-        internal SelectCommand(params object[] commandParameters)
+        public SelectCommand(params object[] commandParameters)
         {
             if (commandParameters.Length > 0)
                 _location = (Point)commandParameters[0];

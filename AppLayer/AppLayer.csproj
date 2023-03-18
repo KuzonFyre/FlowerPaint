@@ -66,8 +66,8 @@
     <Compile Include="DrawingComponents\Element.cs" />
     <Compile Include="DrawingComponents\GraphicsWithSelection.cs" />
     <Compile Include="DrawingComponents\IGraphicsWithSelection.cs" />
-    <Compile Include="DrawingComponents\Tree.cs" />
-    <Compile Include="DrawingComponents\TreeExtrinsicState.cs" />
+    <Compile Include="DrawingComponents\ImageElement.cs" />
+    <Compile Include="DrawingComponents\ImageElementExtrinsicState.cs" />
     <Compile Include="DrawingComponents\TreeFactory.cs" />
     <Compile Include="DrawingComponents\TreeWithAllState.cs" />
     <Compile Include="DrawingComponents\TreeWithIntrinsicState.cs" />

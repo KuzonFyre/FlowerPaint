@@ -6,7 +6,6 @@ namespace AppLayer.Command
     public class RemoveSelectedCommand : Command
     {
         private List<Element> _deletedElements;
-        internal RemoveSelectedCommand() { }
 
         public override bool Execute()
         {

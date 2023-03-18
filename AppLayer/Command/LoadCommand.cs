@@ -9,8 +9,7 @@ namespace AppLayer.Command
         private readonly string _filename;
         private List<Element> _previousElements;
 
-        internal LoadCommand() { }
-        internal LoadCommand(params object[] commandParameters)
+        public LoadCommand(params object[] commandParameters)
         {
             if (commandParameters.Length > 0)
                 _filename = commandParameters[0] as string;

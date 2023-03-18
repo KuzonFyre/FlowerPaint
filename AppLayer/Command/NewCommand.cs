@@ -6,7 +6,6 @@ namespace AppLayer.Command
     public class NewCommand : Command
     {
         private List<Element> _previousElements;
-        internal NewCommand() { }
 
         public override bool Execute()
         {

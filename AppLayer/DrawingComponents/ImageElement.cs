@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace AppLayer.DrawingComponents
 {
     [DataContract]
-    public abstract class Tree : Element
+    public abstract class ImageElement : Element
     {
         public static Pen SelectedPen { get; set; } = new Pen(Color.DarkGray);
         public static Size ToolSize { get; set; } = new Size() { Width = 64, Height = 64 };

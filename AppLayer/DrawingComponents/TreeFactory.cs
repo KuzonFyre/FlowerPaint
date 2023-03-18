@@ -8,7 +8,6 @@ namespace AppLayer.DrawingComponents
         private static TreeFactory _instance;
         private static readonly object MyLock = new object();
 
-        private TreeFactory() { }
 
         public static TreeFactory Instance
         {
@@ -28,7 +27,7 @@ namespace AppLayer.DrawingComponents
 
         private readonly Dictionary<string, TreeWithIntrinsicState> _sharedTrees = new Dictionary<string, TreeWithIntrinsicState>();
 
-        public TreeWithAllState GetTree(TreeExtrinsicState extrinsicState)
+        public TreeWithAllState GetTree(ImageElementExtrinsicState extrinsicState)
         {
             TreeWithIntrinsicState treeWithIntrinsicState;
             if (_sharedTrees.ContainsKey(extrinsicState.TreeType))

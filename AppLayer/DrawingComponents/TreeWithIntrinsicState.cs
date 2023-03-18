@@ -12,7 +12,7 @@ namespace AppLayer.DrawingComponents
     /// Note that this class is tagged as "internal", which means only components in the AppLayer can acces it.  This helps encapsulate the idea
     /// in the AppLayer and prevent misuse by components in other layers.
     /// </summary>
-    internal class TreeWithIntrinsicState : Tree
+    internal class TreeWithIntrinsicState : ImageElement
     {
         public static Color SelectionBackgroundColor { get; set; } = Color.DarkKhaki;
         public string TreeType { get; set; }

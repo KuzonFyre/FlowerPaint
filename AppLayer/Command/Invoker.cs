@@ -34,6 +34,26 @@ namespace AppLayer.Command
             _keepGoing = false;
         }
 
+        public int GetTodoQueueCount()
+        {
+            return _todoQueue.Count;
+        }
+
+        public Thread GetWorkerThread()
+        {
+            return _worker;
+        }
+        public int GetUndoStackCount()
+        {
+            return _undoStack.Count;
+        }
+        public int GetRedoStackCount()
+        {
+            lock (_redoStack)
+            {
+                return _redoStack.Count;
+            }
+        }
         public void EnqueueCommandForExecution(Command cmd)
         {
             if (cmd != null)

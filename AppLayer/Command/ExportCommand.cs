@@ -7,7 +7,7 @@ namespace AppLayer.Command
     {
         private readonly string _filename;
         private readonly Bitmap _image;
-        internal ExportCommand(params object[] commandParameters)
+        public ExportCommand(params object[] commandParameters)
         {
             if (commandParameters.Length > 0)
             {

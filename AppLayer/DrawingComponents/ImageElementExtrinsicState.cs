@@ -4,7 +4,7 @@ using System.Runtime.Serialization;
 namespace AppLayer.DrawingComponents
 {
     [DataContract]
-    public class TreeExtrinsicState
+    public class ImageElementExtrinsicState
     {
         [DataMember]
         public string TreeType { get; set; }
@@ -18,9 +18,9 @@ namespace AppLayer.DrawingComponents
         [DataMember]
         public bool IsSelected { get; set; }
 
-        public TreeExtrinsicState Clone()
+        public ImageElementExtrinsicState Clone()
         {
-            return new TreeExtrinsicState()
+            return new ImageElementExtrinsicState()
             {
                 TreeType = TreeType,
                 Location = Location,

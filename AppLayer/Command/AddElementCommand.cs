@@ -13,7 +13,6 @@ namespace AppLayer.Command
         private Point _location;
         private readonly float _scale;
         private Element _treeAdded;
-        internal AddElementCommand() { }
 
         /// <summary>
         /// Constructor
@@ -23,7 +22,7 @@ namespace AppLayer.Command
         ///     [1]: string     tree type -- a fully qualified resource name
         ///     [2]: Point      center location for the tree, defaut = top left corner
         ///     [3]: float      scale factor</param>
-        internal AddElementCommand(params object[] commandParameters)
+        public AddElementCommand(params object[] commandParameters)
         {
             if (commandParameters.Length > 0)
                 _treeType = commandParameters[0] as string;
@@ -50,7 +49,7 @@ namespace AppLayer.Command
             };
             var treeLocation = new Point(_location.X - treeSize.Width / 2, _location.Y - treeSize.Height / 2);
 
-            var extrinsicState = new TreeExtrinsicState()
+            var extrinsicState = new ImageElementExtrinsicState()
             {
                 TreeType = _treeType,
                 Location = treeLocation,

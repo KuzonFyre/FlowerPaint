@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunnyPaint", "Forests\Sunny
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppLayer", "AppLayer\AppLayer.csproj", "{78CB0893-0D76-432E-9750-E15176EA7F91}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SunnyPaintUnitTests", "SunnyPaintUnitTests\SunnyPaintUnitTests.csproj", "{869E780B-6272-4727-92B2-D73FEFD12F53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,8 +23,15 @@ Global
 		{78CB0893-0D76-432E-9750-E15176EA7F91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78CB0893-0D76-432E-9750-E15176EA7F91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78CB0893-0D76-432E-9750-E15176EA7F91}.Release|Any CPU.Build.0 = Release|Any CPU
+		{869E780B-6272-4727-92B2-D73FEFD12F53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{869E780B-6272-4727-92B2-D73FEFD12F53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{869E780B-6272-4727-92B2-D73FEFD12F53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{869E780B-6272-4727-92B2-D73FEFD12F53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E105F6EC-3D50-4914-8E1A-AF300DEB78AC}
 	EndGlobalSection
 EndGlobal

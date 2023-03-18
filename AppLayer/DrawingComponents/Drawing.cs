@@ -15,8 +15,8 @@ namespace AppLayer.DrawingComponents
         private static readonly DataContractJsonSerializer JsonSerializer =
             new DataContractJsonSerializer(typeof(List<Element>), new[]
             {
-                typeof(Element), typeof(Tree), typeof(TreeWithAllState),
-                typeof(TreeExtrinsicState)
+                typeof(Element), typeof(ImageElement), typeof(TreeWithAllState),
+                typeof(ImageElementExtrinsicState)
             });
 
         public bool IsDirty
@@ -55,7 +55,7 @@ namespace AppLayer.DrawingComponents
                 {
                     if (element is TreeWithAllState tmpTree)
                     {
-                        Tree fullTree = TreeFactory.Instance.GetTree(tmpTree.ExtrinsicState);
+                        ImageElement fullTree = TreeFactory.Instance.GetTree(tmpTree.ExtrinsicState);
                         _elements.Add(fullTree);
                     }
                     else

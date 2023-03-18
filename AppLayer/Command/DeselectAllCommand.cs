@@ -7,7 +7,6 @@ namespace AppLayer.Command
     public class DeselectAllCommand : Command
     {
         private List<Element> _selectedElements;
-        internal DeselectAllCommand() { }
 
         public override bool Execute()
         {
