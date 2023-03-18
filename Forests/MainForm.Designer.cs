@@ -40,7 +40,7 @@
             this.undoButton = new System.Windows.Forms.ToolStripButton();
             this.redoButton = new System.Windows.Forms.ToolStripButton();
             this.ExportButton = new System.Windows.Forms.ToolStripButton();
-            this.move = new System.Windows.Forms.ToolStripButton();
+            this.increasesize = new System.Windows.Forms.ToolStripButton();
             this.drawingToolStrip = new System.Windows.Forms.ToolStrip();
             this.pointerButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -55,6 +55,11 @@
             this.tree01Button = new System.Windows.Forms.ToolStripButton();
             this.tree07Button = new System.Windows.Forms.ToolStripButton();
             this.button1 = new System.Windows.Forms.Button();
+            this.decreasesize = new System.Windows.Forms.ToolStripButton();
+            this.Up = new System.Windows.Forms.ToolStripButton();
+            this.Down = new System.Windows.Forms.ToolStripButton();
+            this.Left = new System.Windows.Forms.ToolStripButton();
+            this.Right = new System.Windows.Forms.ToolStripButton();
             this.fileToolStrip.SuspendLayout();
             this.drawingToolStrip.SuspendLayout();
             this.SuspendLayout();
@@ -87,7 +92,12 @@
             this.undoButton,
             this.redoButton,
             this.ExportButton,
-            this.move});
+            this.increasesize,
+            this.decreasesize,
+            this.Up,
+            this.Down,
+            this.Left,
+            this.Right});
             this.fileToolStrip.Location = new System.Drawing.Point(0, 0);
             this.fileToolStrip.Name = "fileToolStrip";
             this.fileToolStrip.Size = new System.Drawing.Size(1219, 79);
@@ -167,14 +177,15 @@
             this.ExportButton.Text = "Export";
             this.ExportButton.Click += new System.EventHandler(this.exportButton_Click);
             // 
-            // move
+            // increasesize
             // 
-            this.move.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.move.Image = ((System.Drawing.Image)(resources.GetObject("move.Image")));
-            this.move.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.move.Name = "move";
-            this.move.Size = new System.Drawing.Size(36, 76);
-            this.move.Text = "move";
+            this.increasesize.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.increasesize.Image = ((System.Drawing.Image)(resources.GetObject("increasesize.Image")));
+            this.increasesize.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.increasesize.Name = "increasesize";
+            this.increasesize.Size = new System.Drawing.Size(36, 76);
+            this.increasesize.Text = "increase size";
+            this.increasesize.Click += new System.EventHandler(this.increasesize_Click);
             // 
             // drawingToolStrip
             // 
@@ -331,6 +342,56 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // decreasesize
+            // 
+            this.decreasesize.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.decreasesize.Image = ((System.Drawing.Image)(resources.GetObject("decreasesize.Image")));
+            this.decreasesize.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.decreasesize.Name = "decreasesize";
+            this.decreasesize.Size = new System.Drawing.Size(36, 76);
+            this.decreasesize.Text = "Decrease Size";
+            this.decreasesize.Click += new System.EventHandler(this.decreasesize_Click);
+            // 
+            // Up
+            // 
+            this.Up.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Up.Image = ((System.Drawing.Image)(resources.GetObject("Up.Image")));
+            this.Up.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Up.Name = "Up";
+            this.Up.Size = new System.Drawing.Size(36, 76);
+            this.Up.Text = "Up";
+            this.Up.Click += new System.EventHandler(this.Up_Click);
+            // 
+            // Down
+            // 
+            this.Down.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Down.Image = ((System.Drawing.Image)(resources.GetObject("Down.Image")));
+            this.Down.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Down.Name = "Down";
+            this.Down.Size = new System.Drawing.Size(36, 76);
+            this.Down.Text = "Down";
+            this.Down.Click += new System.EventHandler(this.Down_Click);
+            // 
+            // Left
+            // 
+            this.Left.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Left.Image = ((System.Drawing.Image)(resources.GetObject("Left.Image")));
+            this.Left.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Left.Name = "Left";
+            this.Left.Size = new System.Drawing.Size(36, 76);
+            this.Left.Text = "Left";
+            this.Left.Click += new System.EventHandler(this.Left_Click);
+            // 
+            // Right
+            // 
+            this.Right.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.Right.Image = ((System.Drawing.Image)(resources.GetObject("Right.Image")));
+            this.Right.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.Right.Name = "Right";
+            this.Right.Size = new System.Drawing.Size(36, 76);
+            this.Right.Text = "Right";
+            this.Right.Click += new System.EventHandler(this.Right_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -383,7 +444,12 @@
         private System.Windows.Forms.ToolStripButton ExportButton;
         private System.Windows.Forms.ToolStripButton tree01Button;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ToolStripButton move;
+        private System.Windows.Forms.ToolStripButton increasesize;
+        private System.Windows.Forms.ToolStripButton decreasesize;
+        private System.Windows.Forms.ToolStripButton Up;
+        private System.Windows.Forms.ToolStripButton Down;
+        private System.Windows.Forms.ToolStripButton Left;
+        private System.Windows.Forms.ToolStripButton Right;
     }
 }
 

@@ -109,55 +109,41 @@ namespace Forests
 
         private void drawingPanel_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Control && e.KeyCode == Keys.S)
-            {
-                saveButton_Click(sender, e);
-            }
-            else if (e.Control && e.KeyCode == Keys.Z)
-            {
-                undoButton_Click(sender, e);
-            }
-            else if (e.Control && e.Shift && e.KeyCode == Keys.Z)
-            {
-                redoButton_Click(sender, e);
-            }
-            else if (e.KeyCode == Keys.Delete)
-            {
-                CommandFactory.Instance.CreateAndDo("delete");
-            }
-            else if (e.Control && e.KeyCode == Keys.V)
-            {
-                CommandFactory.Instance.CreateAndDo("duplicatetree", drawingPanel.PointToClient(Cursor.Position));
-            }
-            else if (e.Control && e.KeyCode == Keys.Oemplus)
-            {
-                CommandFactory.Instance.CreateAndDo("increasetreesize", SIZEINCREMENT);
-
-            }
-            else if (e.Control && e.KeyCode == Keys.OemMinus)
-            {
-                CommandFactory.Instance.CreateAndDo("decreasetreesize", SIZEINCREMENT);
-            }
-            else if (e.Control && e.KeyCode == Keys.Left)
-            {
-                Console.WriteLine("Left");
-                CommandFactory.Instance.CreateAndDo("move", -1 * MOVEDISTANCE, 0);
-            }
-            else if (e.Control && e.KeyCode == Keys.Right)
-            {
-                CommandFactory.Instance.CreateAndDo("move", MOVEDISTANCE, 0);
-
-            }
-            else if (e.Control && e.KeyCode == Keys.Up)
-            {
-                CommandFactory.Instance.CreateAndDo("move", 0, -1 * MOVEDISTANCE);
-            }
-            else if (e.Control && e.KeyCode == Keys.Down)
-            {
-                CommandFactory.Instance.CreateAndDo("move", 0, MOVEDISTANCE);
-            }
+            if (e.Control && e.KeyCode == Keys.S) saveButton_Click(sender, e);
+            else if (e.Control && e.KeyCode == Keys.Z) undoButton_Click(sender, e);
+            else if (e.Control && e.Shift && e.KeyCode == Keys.Z) redoButton_Click(sender, e);
+            else if (e.KeyCode == Keys.Delete) CommandFactory.Instance.CreateAndDo("delete");
+            else if (e.Control && e.KeyCode == Keys.V) CommandFactory.Instance.CreateAndDo("duplicatetree", drawingPanel.PointToClient(Cursor.Position));
+            else if (e.Control && e.KeyCode == Keys.Oemplus) increaseSize();
+            else if (e.Control && e.KeyCode == Keys.OemMinus) decreaseSize();
+            else if (e.Control && e.KeyCode == Keys.Left) moveLeft();
+            else if (e.Control && e.KeyCode == Keys.Right) moveRight();
+            else if (e.Control && e.KeyCode == Keys.Up) moveUp();
+            else if (e.Control && e.KeyCode == Keys.Down) moveDown();
         }
-
+        private void moveLeft()
+        {
+            CommandFactory.Instance.CreateAndDo("move", -1 * MOVEDISTANCE, 0);
+        }
+        private void moveRight()
+        {
+            CommandFactory.Instance.CreateAndDo("move", MOVEDISTANCE, 0);
+        }
+        private void moveUp() {
+            CommandFactory.Instance.CreateAndDo("move", 0, -1 * MOVEDISTANCE);
+        }
+        private void moveDown()
+        {
+            CommandFactory.Instance.CreateAndDo("move", 0, MOVEDISTANCE);
+        }
+        private void decreaseSize()
+        {
+            CommandFactory.Instance.CreateAndDo("decreasetreesize", SIZEINCREMENT);
+        }
+        private void increaseSize()
+        {
+            CommandFactory.Instance.CreateAndDo("increasetreesize", SIZEINCREMENT);
+        }
         private void treeButton_Click(object sender, EventArgs e)
         {
             var button = sender as ToolStripButton;
@@ -304,6 +290,36 @@ namespace Forests
                 // Set the background color of the form to the selected color
                 drawingPanel.BackColor = colorDialog.Color;
             }
+        }
+
+        private void decreasesize_Click(object sender, EventArgs e)
+        {
+            decreaseSize();
+        }
+
+        private void increasesize_Click(object sender, EventArgs e)
+        {
+            increaseSize();
+        }
+
+        private void Up_Click(object sender, EventArgs e)
+        {
+            moveUp();
+        }
+
+        private void Down_Click(object sender, EventArgs e)
+        {
+            moveDown();
+        }
+
+        private void Left_Click(object sender, EventArgs e)
+        {
+            moveLeft();
+        }
+
+        private void Right_Click(object sender, EventArgs e)
+        {
+            moveRight();
         }
     }
 }
